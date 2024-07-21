@@ -1,10 +1,10 @@
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { IoCartOutline } from "react-icons/io5";
 import { logo } from "../../images";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header>
+    <header className="bg-primary-100">
       <div className="container mx-auto px-4 flex justify-between py-5">
         <Link to="/">
           <figure className="h-8">
@@ -12,7 +12,7 @@ export const Header = () => {
           </figure>
         </Link>
         <button>
-          <HiOutlineShoppingBag className="h-7 w-7" />
+          <IoCartOutline className="h-7 w-7" />
         </button>
       </div>
     </header>
