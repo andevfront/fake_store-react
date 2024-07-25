@@ -1,11 +1,21 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { IoCart } from "react-icons/io5";
-
 import { Spinner } from "./Spinner";
+import { addProduct } from "../../store/cart";
 
 export const ProductCard = ({ category, id, image, price, title }) => {
   const [loadingImage, setLoadingImage] = useState(true);
+
+  const product = {
+    id,
+    title,
+    price,
+    image,
+  };
+
+  const dispatch = useDispatch();
 
   return (
     <div className="col-span-6 group flex flex-col border p-3 sm:col-span-2 lg:col-span-1">
@@ -34,7 +44,10 @@ export const ProductCard = ({ category, id, image, price, title }) => {
         {title}
       </Link>
       <span className="mb-2">${price}</span>
-      <button className="flex gap-2 justify-center items-center mt-auto rounded-md bg-primary-800 text-white px-3 py-2 transition-all duration-300 hover:bg-primary-700">
+      <button
+        className="flex gap-2 justify-center items-center mt-auto rounded-md bg-primary-800 text-white px-3 py-2 transition-all duration-300 hover:bg-primary-700"
+        onClick={() => dispatch(addProduct(product))}
+      >
         <IoCart className="h-5 w-5" />
         Add to cart
       </button>
