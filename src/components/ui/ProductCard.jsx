@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { IoCart } from "react-icons/io5";
+
 import { Spinner } from "./Spinner";
 import { addProduct } from "../../store/cart";
+import { CustomToast } from "./CustomToast";
 
 export const ProductCard = ({ category, id, image, price, title }) => {
   const [loadingImage, setLoadingImage] = useState(true);
+  const dispatch = useDispatch();
 
   const product = {
     id,
@@ -15,7 +19,21 @@ export const ProductCard = ({ category, id, image, price, title }) => {
     image,
   };
 
-  const dispatch = useDispatch();
+  const toastConfig = {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  };
+
+  const handleAddToCart = () => {
+    toast(<CustomToast {...product} />, toastConfig);
+    dispatch(addProduct(product));
+  };
 
   return (
     <div className="col-span-6 group flex flex-col border p-3 sm:col-span-2 lg:col-span-1">
@@ -46,7 +64,7 @@ export const ProductCard = ({ category, id, image, price, title }) => {
       <span className="mb-2">${price}</span>
       <button
         className="flex gap-2 justify-center items-center mt-auto rounded-md bg-primary-800 text-white px-3 py-2 transition-all duration-300 hover:bg-primary-700"
-        onClick={() => dispatch(addProduct(product))}
+        onClick={handleAddToCart}
       >
         <IoCart className="h-5 w-5" />
         Add to cart

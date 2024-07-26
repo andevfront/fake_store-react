@@ -5,3 +5,7 @@
 body {
   @apply bg-[#fffdfd];
 }
+
+.Toastify__toast-container--top-right {
+  @apply top-14;
+}
