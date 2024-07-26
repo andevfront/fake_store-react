@@ -1,3 +1,4 @@
+import { Button } from "react-scroll";
 import { intro } from "../../../images";
 
 export const HeroSection = () => {
@@ -9,9 +10,14 @@ export const HeroSection = () => {
           <p className="text-xl mb-6">
             Discover exclusive products and special offers just for you
           </p>
-          <button className="rounded-md bg-primary-800 text-white px-3 py-2 transition-all duration-300 hover:bg-primary-700">
+          <Button
+            className="rounded-md bg-primary-800 text-white px-3 py-2 transition-all duration-300 hover:bg-primary-700"
+            to="products"
+            smooth={true}
+            duration={400}
+          >
             Explore Now
-          </button>
+          </Button>
         </div>
         <figure className="h-96">
           <img className="h-full" src={intro} alt="" />
