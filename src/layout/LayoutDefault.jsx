@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,6 +26,7 @@ export const LayoutDefault = () => {
       <CartModal isCartOpen={isCartOpen} onCloseCart={onCloseCart} />
       <GoTopButton />
       <ToastContainer />
+      <ScrollRestoration />
       <Footer />
     </>
   );
