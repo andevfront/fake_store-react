@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { CartModal, Footer, Header } from "../components/layout";
+import { GoTopButton } from "../components/ui";
 
 export const LayoutDefault = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -23,6 +24,7 @@ export const LayoutDefault = () => {
       <Header onToggleCart={onToggleCart} />
       <Outlet />
       <CartModal isCartOpen={isCartOpen} onCloseCart={onCloseCart} />
+      <GoTopButton />
       <ToastContainer />
       <Footer />
     </>
