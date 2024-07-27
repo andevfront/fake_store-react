@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { roundToTwoDecimals } from "../../helpers";
+import { roundToTwoDecimals, saveToLocalStorage } from "../../helpers";
 
 export const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
   reducers: {
     addProduct: (state, { payload }) => {
       const existingProduct = state.find((product) => product.id === payload.id);
@@ -16,16 +18,22 @@ export const cartSlice = createSlice({
           existingProduct.price * existingProduct.quantity
         );
         return;
+      } else {
+        state.push({
+          ...payload,
+          quantity: 1,
+          total: roundToTwoDecimals(payload.price),
+        });
       }
 
-      state.push({
-        ...payload,
-        quantity: 1,
-        total: roundToTwoDecimals(payload.price),
-      });
+      saveToLocalStorage(state);
     },
     removeProduct: (state, { payload }) => {
-      return state.filter((product) => product.id !== payload);
+      const newState = state.filter((product) => product.id !== payload);
+
+      saveToLocalStorage(newState);
+
+      return newState;
     },
     incrementQuantity: (state, { payload }) => {
       const product = state.find((product) => product.id === payload);
@@ -34,6 +42,8 @@ export const cartSlice = createSlice({
         product.quantity += 1;
         product.total = roundToTwoDecimals(product.price * product.quantity);
       }
+
+      saveToLocalStorage(state);
     },
     decrementQuantity: (state, { payload }) => {
       const product = state.find((product) => product.id === payload);
@@ -42,6 +52,8 @@ export const cartSlice = createSlice({
         product.quantity -= 1;
         product.total = roundToTwoDecimals(product.price * product.quantity);
       }
+
+      saveToLocalStorage(state);
     },
   },
 });
