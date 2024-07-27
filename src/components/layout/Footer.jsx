@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-[#f5f5f5] text-center py-10">
+    <footer className="bg-[#f5f5f5] text-center py-10 mt-auto">
       <p>
         Designed by {""}
         <a

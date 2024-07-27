@@ -6,6 +6,10 @@ body {
   @apply bg-[#fffdfd];
 }
 
+#root {
+  @apply flex flex-col min-h-screen;
+}
+
 .Toastify__toast-container--top-right {
   @apply top-14;
 }
