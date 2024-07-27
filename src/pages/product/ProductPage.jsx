@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { useGetProductQuery } from "../../store/api/productsApi";
 import { Spinner } from "../../components";
 import { ProductDetails, SkeletonProductDetails } from "./components";
@@ -21,6 +22,11 @@ export const ProductPage = () => {
   if (isLoading) {
     return (
       <section className="container mx-auto grid grid-cols-2 items-center gap-20 py-20 px-4">
+        <div className="relative col-span-2 sm:col-span-1">
+          <div className="absolute flex justify-center items-center w-full h-full">
+            <Spinner />
+          </div>
+        </div>
         <SkeletonProductDetails />
       </section>
     );
