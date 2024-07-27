@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { roundToTwoDecimals } from "../../helpers";
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState: [],
@@ -10,14 +12,16 @@ export const cartSlice = createSlice({
       if (existingProduct) {
         existingProduct.quantity =
           (existingProduct.quantity || 0) + (payload.quantity || 1);
-        existingProduct.total = existingProduct.price * existingProduct.quantity;
+        existingProduct.total = roundToTwoDecimals(
+          existingProduct.price * existingProduct.quantity
+        );
         return;
       }
 
       state.push({
         ...payload,
         quantity: 1,
-        total: payload.price,
+        total: roundToTwoDecimals(payload.price),
       });
     },
     removeProduct: (state, { payload }) => {
@@ -28,7 +32,7 @@ export const cartSlice = createSlice({
 
       if (product) {
         product.quantity += 1;
-        product.total = product.price * product.quantity;
+        product.total = roundToTwoDecimals(product.price * product.quantity);
       }
     },
     decrementQuantity: (state, { payload }) => {
@@ -36,7 +40,7 @@ export const cartSlice = createSlice({
 
       if (product && product.quantity > 1) {
         product.quantity -= 1;
-        product.total = product.price * product.quantity;
+        product.total = roundToTwoDecimals(product.price * product.quantity);
       }
     },
   },

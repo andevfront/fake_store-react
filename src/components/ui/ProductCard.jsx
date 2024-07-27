@@ -36,7 +36,7 @@ export const ProductCard = ({ category, id, image, price, title }) => {
   };
 
   return (
-    <div className="col-span-6 group flex flex-col border p-3 sm:col-span-2 lg:col-span-1">
+    <div className="col-span-6 group flex flex-col border border-slate-300 p-3 sm:col-span-2 lg:col-span-1">
       <Link className="relative" to={`product/${id}`}>
         {loadingImage && (
           <div className="absolute flex justify-center items-center w-full h-full ">

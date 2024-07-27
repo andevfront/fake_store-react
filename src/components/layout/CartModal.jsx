@@ -49,14 +49,14 @@ export const CartModal = ({ isCartOpen, onCloseCart }) => {
                 </div>
               ) : (
                 <>
-                  <div className="my-4 overflow-y-auto">
+                  <div className="my-4 overflow-y-auto h-full">
                     {products.map((product) => (
                       <CartItem key={product.id} {...product} />
                     ))}
                   </div>
                   <div className="mt-auto border-t border-slate-300">
                     <span className="block font-semibold uppercase my-4">
-                      Total: {total.toFixed(2)}
+                      Total: ${total.toFixed(2)}
                     </span>
                     <div className="bg-primary-800 cursor-pointer font-semibold text-center text-white rounded-md py-2 w-full transition-all duration-300 hover:bg-primary-700">
                       Checkout
