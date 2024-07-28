@@ -23,7 +23,7 @@ export const CartModal = ({ isCartOpen, onCloseCart }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ type: "tween" }}
-          className=" fixed inset-0 z-50 flex h-screen w-screen bg-black/40"
+          className=" fixed inset-0 z-50 flex h-full w-full bg-black/40"
           onClick={handleOverlayClick}
         >
           <motion.div

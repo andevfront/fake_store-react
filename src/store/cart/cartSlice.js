@@ -17,6 +17,9 @@ export const cartSlice = createSlice({
         existingProduct.total = roundToTwoDecimals(
           existingProduct.price * existingProduct.quantity
         );
+
+        saveToLocalStorage([existingProduct]);
+
         return;
       } else {
         state.push({
