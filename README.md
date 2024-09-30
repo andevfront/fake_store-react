@@ -14,7 +14,7 @@ Tecnologías y Herramientas utilizadas:
 
 ### Demo
 
-Ver demostración: [DEMO](https://fake-store.andevfrontend.site/)
+Ver demostración: [DEMO](https://fakestore-andevfront.netlify.app/)
 
 ---
 
